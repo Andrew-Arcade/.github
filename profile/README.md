@@ -1,4 +1,4 @@
-<img src="../andrew-arcade-logo.png">
+<img src="../logo/andrew-arcade-banner.png">
 
 #
 
