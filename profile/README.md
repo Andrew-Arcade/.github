@@ -4,7 +4,7 @@
 
 > [!NOTE]
 > ### HACKCLUB
-> My JOURNAL.md can be found here: https://github.com/Andrew-Arcade/log/JOURNAL.md.<br>
+> My JOURNAL.md can be found here: https://github.com/Andrew-Arcade/log/blob/main/JOURNAL.md.<br>
 > This project is split into several repositories for better organization and to save space on the Raspberry Pi 5.
 
 ### About Andrew Arcade
