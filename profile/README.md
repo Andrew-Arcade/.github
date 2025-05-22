@@ -2,6 +2,11 @@
 
 #
 
+> [!NOTE]
+> ### HACKCLUB
+> My JOURNAL.md can be found here: https://github.com/Andrew-Arcade/log/JOURNAL.md.<br>
+> This project is split into several repositories for better organization and to save space on the Raspberry Pi 5.
+
 ### About Andrew Arcade
 
 Andrew Arcade is a custom game console built with a Raspberry Pi 5 running Linux. Its main purpose is to play Unity games that I have created.
