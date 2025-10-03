@@ -11,3 +11,5 @@ Since the Raspberry Pi 5 uses an ARM processor, Unity games can't be compiled to
 ### Version 2
 
 Version 2 of Andrew Arcade will feature a redesigned case. My goal is to make it more comfortable to use and to improve some of the mounting parts that didn’t work well in the first version.
+
+I basically finished building version 2, I am working on organizing all the repos and making instructions for everything.
