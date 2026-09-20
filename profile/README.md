@@ -4,12 +4,12 @@
 
 ### About Andrew Arcade
 
-Andrew Arcade is a custom game console built with a Raspberry Pi 5 running Linux. Its main purpose is to play Unity games that I have created.
+Andrew Arcade is a custom game console built with a Raspberry Pi 5 running Linux. Its main purpose is to play video games that I (and others) have created.
 
-Since the Raspberry Pi 5 uses an ARM processor, Unity games can't be compiled to run on it directly. To solve this, we use a tool called Box64, which lets us run Unity games and apps on the Raspberry Pi by emulating the required architecture.
+Designed for makers who love both hardware and software.
 
-### Version 2
+Hardware:
+The system is designed around the Raspberry Pi 5. A screen and and controller plug in and integrate seamlessly with the design of the device. The controller is a custom pcb holding a Waveshare Zero running [GP2040-CE](https://github.com/OpenStickCommunity/GP2040-CE) designed for buttons and joystick to be easily plugged in and swapped out via simple jst connections. It has a full gamepad setup with two joysticks and ten buttons for the normal Up/Down/Left/Right, A/B/X/Y, and Start/Option controller layout. Everything mounts to a 3d printed case which houses the system cleanly.
 
-Version 2 of Andrew Arcade will feature a redesigned case. My goal is to make it more comfortable to use and to improve some of the mounting parts that didn’t work well in the first version.
-
-I basically finished building version 2, I am working on organizing all the repos and making instructions for everything.
+Software:
+The Raspberry Pi 5 is running [DietPi](https://github.com/MichaIng/DietPi), a minimal Linux distribution designed for the Raspberry Pi 5. We have an application we call the Driver, it is effectively the home screen of the console and is loaded on startup. In the Driver you can run and manage your installed cabinets (games/apps) and shutdown/resetart/sleep the system. The driver installs cabinets from their repositories, using a standardized file to read metadata about the cabinet before installing/updating. The controller module/pcb runs [GP2040-CE](https://github.com/OpenStickCommunity/GP2040-CE), an opensource firmware for emulating controllers over hid. It may seem complicated to setup the software but it is very simple, we have a very detailed guide and once you get the os installed to the Raspberry Pi 5 all you need to do is run a single script to get everything setup (autostart/users/file structures, etc...).
