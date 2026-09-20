@@ -4,12 +4,34 @@
 
 ### About Andrew Arcade
 
-Andrew Arcade is a custom game console built with a Raspberry Pi 5 running Linux. Its main purpose is to play video games that I (and others) have created.
+Andrew Arcade is a custom game console built around a Raspberry Pi 5 running Linux. Its purpose is to play the games that I - and anyone else who wants to build for it - have made.
 
-Designed for makers who love both hardware and software.
+It is designed for makers who love both hardware and software. Every piece of it is open: the case, the controller PCB, the launcher, and the games.
 
-Hardware:
-The system is designed around the Raspberry Pi 5. A screen and and controller plug in and integrate seamlessly with the design of the device. The controller is a custom pcb holding a Waveshare Zero running [GP2040-CE](https://github.com/OpenStickCommunity/GP2040-CE) designed for buttons and joystick to be easily plugged in and swapped out via simple jst connections. It has a full gamepad setup with two joysticks and ten buttons for the normal Up/Down/Left/Right, A/B/X/Y, and Start/Option controller layout. Everything mounts to a 3d printed case which houses the system cleanly.
+### Hardware
 
-Software:
-The Raspberry Pi 5 is running [DietPi](https://github.com/MichaIng/DietPi), a minimal Linux distribution designed for the Raspberry Pi 5. We have an application we call the Driver, it is effectively the home screen of the console and is loaded on startup. In the Driver you can run and manage your installed cabinets (games/apps) and shutdown/resetart/sleep the system. The driver installs cabinets from their repositories, using a standardized file to read metadata about the cabinet before installing/updating. The controller module/pcb runs [GP2040-CE](https://github.com/OpenStickCommunity/GP2040-CE), an opensource firmware for emulating controllers over hid. It may seem complicated to setup the software but it is very simple, we have a very detailed guide and once you get the os installed to the Raspberry Pi 5 all you need to do is run a single script to get everything setup (autostart/users/file structures, etc...).
+The console is built around a Raspberry Pi 5. A screen and a controller plug straight in, and both are designed to be part of the device rather than accessories hanging off of it. Everything mounts inside a 3D printed case that houses the system cleanly.
+
+The controller is a custom PCB built around a [Waveshare RP2040-Zero](https://www.waveshare.com/rp2040-zero.htm) running [GP2040-CE](https://github.com/OpenStickCommunity/GP2040-CE), an open source firmware that makes the board show up as a standard USB HID gamepad - no drivers, no configuration. Buttons and joysticks connect through simple JST connectors, so any of them can be swapped out without touching the board. The layout is a full gamepad: two analog joysticks and ten buttons covering Up/Down/Left/Right, A/B/X/Y, and Start/Option.
+
+A full parts list lives in the [instructions](https://github.com/Andrew-Arcade/instructions/blob/main/BOM.md) repository.
+
+### Software
+
+The Pi runs [DietPi](https://github.com/MichaIng/DietPi), a minimal Debian based distribution for single board computers, so almost all of the system's resources go to the games.
+
+On top of that sits the Driver - the console's home screen. It launches on startup and is the only thing you ever need to touch. From the Driver you can browse, install, update, remove, and launch your cabinets (our word for games and apps), and reboot, shut down, or update the console itself.
+
+Cabinets are installed straight from their GitHub repositories. The Driver reads a registry of cabinet repos, pulls a standardized metadata file from each one, and installs the matching release - no SD card shuffling, no file managers. Metadata and icons are cached on the device, so the library still loads when the console is offline. Cabinets built for arm64 run natively; x86_64 builds run through [box64](https://github.com/ptitSeb/box64).
+
+Setting all of this up sounds involved, but it isn't. Once DietPi is installed on the Pi, a single script handles the rest - users, autostart, file structure, GPU config, and dependencies:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/Andrew-Arcade/driver/main/scripts/setup.sh | sudo bash
+```
+
+The [docs](https://github.com/Andrew-Arcade/docs) repository has the detailed walkthrough, plus everything you need to publish your own cabinet.
+
+<hr>
+
+By the way, we know the repos seem a bit all over, we are working to clean that up and consolidate.
